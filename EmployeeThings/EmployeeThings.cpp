@@ -12,6 +12,20 @@ vector<float> allGrossSalaries, allBonuses, allNetSalaries, allSalaryPoints;
 
 bool programRunning = true;
 
+void clearScreen() {
+	int n;
+	for (n = 0; n < 10; n++)
+		cout << "\n\n\n\n\n\n\n\n\n\n";
+}
+
+void pauseScreen() {
+	cout << "Press enter to continue...";
+	cin.ignore();
+	cin.get();
+}
+
+
+
 int addEmployee() {
 	
 	string employeeName;
@@ -333,11 +347,11 @@ int menuBrowser(bool firstRun) {
 
 
 	while (programRunning == true) {
-		system("cls"); //clears the console to tidy things up
+		clearScreen(); //clears the console to tidy things up
 		switch (menuQuestion()) {
 		case 1:
 			while (true) {
-				system("cls");
+				clearScreen();
 				addEmployee();
 
 
@@ -353,7 +367,7 @@ int menuBrowser(bool firstRun) {
 			}
 			break;
 		case 2:
-			system("cls");
+			clearScreen();
 			for (int i = 0; i < allEmployees.size(); i++)
 			{
 				cout << allEmployees[i] << ": " << endl;
@@ -363,11 +377,11 @@ int menuBrowser(bool firstRun) {
 				cout << "Annual Salary: " << allNetSalaries[i] << '\n' << endl;
 
 			}
-			system("pause");
-			system("cls");
+			pauseScreen();
+			clearScreen();
 			break;
 		case 3:
-			system("cls");
+			clearScreen();
 			viewSpecificEmployee();
 			break;
 		case 4:
