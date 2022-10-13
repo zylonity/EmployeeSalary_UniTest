@@ -34,6 +34,8 @@ int addEmployee() {
 	int salaryPoint;
 	float annualSalary, decemberSalary, grossSalary;
 
+	const int salaryMultiplier = 2000;
+	const float bonusPercent = 0.025; //2.5%
 
 	cout << "Enter employee name: ";
 	cin >> ws;
@@ -46,8 +48,8 @@ int addEmployee() {
 
 
 	//calculate gross, bonus and net salary
-	grossSalary = salaryPoint * 2000;
-	decemberSalary = grossSalary * 0.025;
+	grossSalary = salaryPoint * salaryMultiplier;
+	decemberSalary = grossSalary * bonusPercent;
 
 	annualSalary = grossSalary + decemberSalary;
 
