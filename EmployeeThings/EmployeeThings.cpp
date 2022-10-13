@@ -222,6 +222,48 @@ int moveSavedDataToArray() {
 }
 
 
+int sortArrays() {
+
+	//sort all arrays by salary points
+	for (int i = 0; i < allSalaryPoints.size(); i++)
+	{
+		for (int j = i + 1; j < allSalaryPoints.size(); j++)
+		{
+			if (allSalaryPoints[i] > allSalaryPoints[j])
+			{
+				//swap salary points
+				int temp = allSalaryPoints[i];
+				allSalaryPoints[i] = allSalaryPoints[j];
+				allSalaryPoints[j] = temp;
+
+				//swap employee names
+				string temp2 = allEmployees[i];
+				allEmployees[i] = allEmployees[j];
+				allEmployees[j] = temp2;
+
+				//swap gross salaries
+				float temp3 = allGrossSalaries[i];
+				allGrossSalaries[i] = allGrossSalaries[j];
+				allGrossSalaries[j] = temp3;
+
+				//swap bonuses
+				float temp4 = allBonuses[i];
+				allBonuses[i] = allBonuses[j];
+				allBonuses[j] = temp4;
+
+				//swap net salaries
+				float temp5 = allNetSalaries[i];
+				allNetSalaries[i] = allNetSalaries[j];
+				allNetSalaries[j] = temp5;
+			}
+		}
+	}
+
+	return 0;
+}
+
+
+
 int modifySpecificEmployee(int pos) {
 
 	string employeeName;
@@ -327,8 +369,9 @@ int menuQuestion() {
 	cout << "Please choose from the following options" << endl;
 	cout << "1) Add new employee to the system" << endl;
 	cout << "2) View all employee details" << endl;
-	cout << "3) View a SPECIFIC employee's details" << endl;
-	cout << "4) Save and exit" << endl;
+	cout << "3) Sort all employees by salary points" << endl;
+	cout << "4) View a SPECIFIC employee's details" << endl;
+	cout << "5) Save and exit" << endl;
 	cout << '\n' << "----------------------------------------" << '\n' << endl;
 
 	cin >> menuItem;
@@ -384,9 +427,13 @@ int menuBrowser(bool firstRun) {
 			break;
 		case 3:
 			clearScreen();
-			viewSpecificEmployee();
+			sortArrays();
 			break;
 		case 4:
+			clearScreen();
+			viewSpecificEmployee();
+			break;
+		case 5:
 			saveDataToFile();
 			programRunning = false;
 			break;
